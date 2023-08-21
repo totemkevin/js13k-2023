@@ -89,3 +89,13 @@ body {
 #kanban {
   background: #fff;
 }
+#army-action {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+}
+.army-btn {
+  flex: 1 0 0;
+  text-align: center;
+}
