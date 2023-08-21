@@ -17,10 +17,18 @@
         </div>
         <div id="army" class="info">
           <div>Army</div>
-          <div class="stat">Shield<span id="armyshield" class="stat-value"></span></div>
-          <div class="stat">Warrior<span id="armywarrior" class="stat-value"></span></div>
-          <div class="stat">Archer<span id="armyarcher" class="stat-value"></span></div>
-          <div class="stat">Rider<span id="armyrider" class="stat-value"></span></div>
+          <div class="stat">
+            Shield<span id="armyshield" class="stat-value"></span><button id="addS" class="add">+</button>
+          </div>
+          <div class="stat">
+            Warrior<span id="armywarrior" class="stat-value"></span><button id="addW" class="add">+</button>
+          </div>
+          <div class="stat">
+            Archer<span id="armyarcher" class="stat-value"></span><button id="addA" class="add">+</button>
+          </div>
+          <div class="stat">
+            Rider<span id="armyrider" class="stat-value"></span><button id="addR" class="add">+</button>
+          </div>
         </div>
 
         <div id="town" class="info">
@@ -36,12 +44,15 @@
         </div>
         <div id="action" class="info">
           <div>Action</div>
-          <button id="next">Next Day</button>
-          <button id="attack">Attack</button>
-          <button id="detect">Detect</button>
+          <button id="next" class="action">Next Day</button>
+          <button id="attack" class="action">Attack</button>
+          <button id="detect" class="action">Detect</button>
         </div>
       </div>
-      <div id="log">Log</div>
+      <div id="log">
+        <div>Log</div>
+        <div id="kanban"></div>
+      </div>
       <div id="scence"></div>
     </div>
     <script src="js/main.js" type="module"></script>

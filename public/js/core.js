@@ -23,6 +23,7 @@ export default class core {
         archer: 0,
         rider: 0
       },
+      log: [],
       game: {
         isAttacked: false
       }
@@ -33,25 +34,50 @@ export default class core {
     return this.data;
   }
   init() {
+    console.log('init');
+    addListener(this);
+    this.notify('You are the command.');
     const { guard } = town.create(this.data.town.level);
     this.data.guard = guard;
+    this.refreshUI();
   }
 
   next() {
-    console.log('core next');
-    console.log(this.data.game.isAttacked);
     if (this.data.game.isAttacked) {
       const { guard } = town.create(this.data.town.level);
       this.data.guard = guard;
     }
-    refreshUI(this.data);
+    this.refreshUI();
   }
   attack() {
     this.data.game.isAttacked = true;
     this.data.town.level += 1;
-    refreshUI(this.data);
+    this.refreshUI();
   }
   detect() {
+    this.refreshUI();
+  }
+  refreshUI() {
     refreshUI(this.data);
+  }
+  notify(message) {
+    this.data.log.push(message);
+  }
+  addArmy(type) {
+    switch (type) {
+      case 's':
+        this.data.army.shield += 1;
+        break;
+      case 'w':
+        this.data.army.warrior += 1;
+        break;
+      case 'a':
+        this.data.army.archer += 1;
+        break;
+      case 'r':
+        this.data.army.rider += 1;
+        break;
+    }
+    this.refreshUI();
   }
 }
