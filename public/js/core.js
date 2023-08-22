@@ -1,5 +1,6 @@
 import * as town from './town.js';
 import { refreshUI, addListener } from './ui.js';
+import Army from './army.js';
 export default class core {
   constructor() {
     this.data = {
@@ -39,6 +40,8 @@ export default class core {
     this.notify('You are the command.');
     const { guard } = town.create(this.data.town.level);
     this.data.guard = guard;
+    const army = new Army(this)
+    army.init()
     this.refreshUI();
   }
 

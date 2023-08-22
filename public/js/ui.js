@@ -11,19 +11,6 @@ export function addListener(core) {
     console.log('detect');
     core.detect();
   });
-  document.getElementById('addS').addEventListener('click', () => {
-    console.log('addS');
-    core.addArmy('s');
-  });
-  document.getElementById('addW').addEventListener('click', () => {
-    core.addArmy('w');
-  });
-  document.getElementById('addA').addEventListener('click', () => {
-    core.addArmy('a');
-  });
-  document.getElementById('addR').addEventListener('click', () => {
-    core.addArmy('r');
-  });
 }
 
 export function refreshUI(data = {}) {

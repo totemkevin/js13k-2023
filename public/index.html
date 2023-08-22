@@ -1,72 +1,93 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Game</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-  </head>
-  <body>
-    <div id="home">
-      <div id="panel">
-        <div id="info" class="info">
-          <div>Info</div>
-          <div class="stat">Day<span id="day" class="stat-value"></span></div>
-          <div class="stat">Money<span id="money" class="stat-value"></span></div>
-          <div class="stat">Population<span id="population" class="stat-value"></span></div>
-        </div>
-        <div id="army" class="info">
-          <div>Army</div>
-          <div class="stat">
-            Shield<span id="armyshield" class="stat-value"></span>
-            <button id="reduceS" class="add">-</button>
-            <button id="addS" class="add">+</button>
-          </div>
-          <div class="stat">
-            Warrior<span id="armywarrior" class="stat-value"></span>
-            <button id="reduceW" class="add">-</button>
-            <button id="addW" class="add">+</button>
-          </div>
-          <div class="stat">
-            Archer<span id="armyarcher" class="stat-value"></span>
-            <button id="reduceA" class="add">-</button>
-            <button id="addA" class="add">+</button>
-          </div>
-          <div class="stat">
-            Rider<span id="armyrider" class="stat-value"></span>
-            <button id="reduceR" class="add">-</button>
-            <button id="addR" class="add">+</button>
-          </div>
-          <div id="army-action">
-            <button id="cancel" class="army-btn">cancel</button>
-            <button id="accept" class="army-btn">accept</button>
-          </div>
-        </div>
 
-        <div id="town" class="info">
-          <div>Town</div>
-          <div class="stat">Level<span id="level" class="stat-value"></span></div>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Game</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+
+<body>
+  <div id="home">
+    <div id="panel">
+      <div id="info" class="info">
+        <div>Info</div>
+        <div class="stat">Day<span id="day" class="stat-value"></span></div>
+        <div class="stat">Money<span id="money" class="stat-value"></span></div>
+        <div class="stat">Population<span id="population" class="stat-value"></span></div>
+      </div>
+      <div id="armyInfo" class="info">
+        <div>Army</div>
+        <div class="stat">
+          Shield<span id="armyshield" class="stat-value"></span>
         </div>
-        <div id="guard" class="info">
-          <div>Guard</div>
-          <div class="stat">Shield<span id="guardshield" class="stat-value"></span></div>
-          <div class="stat">Warrior<span id="guardwarrior" class="stat-value"></span></div>
-          <div class="stat">Archer<span id="guardarcher" class="stat-value"></span></div>
-          <div class="stat">Rider<span id="guardrider" class="stat-value"></span></div>
+        <div class="stat">
+          Warrior<span id="armywarrior" class="stat-value"></span>
         </div>
-        <div id="action" class="info">
-          <div>Action</div>
-          <button id="next" class="action">Next Day</button>
-          <button id="attack" class="action">Attack</button>
-          <button id="detect" class="action">Detect</button>
+        <div class="stat">
+          Archer<span id="armyarcher" class="stat-value"></span>
+        </div>
+        <div class="stat">
+          Rider<span id="armyrider" class="stat-value"></span>
+        </div>
+        <div id="army-action">
+          <button id="buy" class="army-btn">buy</button>
         </div>
       </div>
-      <div id="log">
-        <div>Log</div>
-        <div id="kanban"></div>
+      <div id="armyEdit" class="info" style="display:none">
+        <div>Army</div>
+        <div class="stat">
+          Shield<span id="armyshield" class="stat-value"></span>
+          <button id="reduceS" class="add">-</button>
+          <button id="addS" class="add">+</button>
+        </div>
+        <div class="stat">
+          Warrior<span id="armywarrior" class="stat-value"></span>
+          <button id="reduceW" class="add">-</button>
+          <button id="addW" class="add">+</button>
+        </div>
+        <div class="stat">
+          Archer<span id="armyarcher" class="stat-value"></span>
+          <button id="reduceA" class="add">-</button>
+          <button id="addA" class="add">+</button>
+        </div>
+        <div class="stat">
+          Rider<span id="armyrider" class="stat-value"></span>
+          <button id="reduceR" class="add">-</button>
+          <button id="addR" class="add">+</button>
+        </div>
+        <div id="army-action">
+          <button id="cancel" class="army-btn">cancel</button>
+          <button id="accept" class="army-btn">accept</button>
+        </div>
       </div>
-      <div id="scence"></div>
+
+      <div id="town" class="info">
+        <div>Town</div>
+        <div class="stat">Level<span id="level" class="stat-value"></span></div>
+      </div>
+      <div id="guard" class="info">
+        <div>Guard</div>
+        <div class="stat">Shield<span id="guardshield" class="stat-value"></span></div>
+        <div class="stat">Warrior<span id="guardwarrior" class="stat-value"></span></div>
+        <div class="stat">Archer<span id="guardarcher" class="stat-value"></span></div>
+        <div class="stat">Rider<span id="guardrider" class="stat-value"></span></div>
+      </div>
+      <div id="action" class="info">
+        <div>Action</div>
+        <button id="next" class="action">Next Day</button>
+        <button id="attack" class="action">Attack</button>
+        <button id="detect" class="action">Detect</button>
+      </div>
     </div>
-    <script src="js/main.js" type="module"></script>
-  </body>
+    <div id="log">
+      <div>Log</div>
+      <div id="kanban"></div>
+    </div>
+    <div id="scence"></div>
+  </div>
+  <script src="js/main.js" type="module"></script>
+</body>
+
 </html>
