@@ -1,47 +1,24 @@
-import * as town from './town.js';
-import { refreshUI, addListener } from './ui.js';
-import Army from './army.js';
-export default class core {
-  constructor() {
-    this.data = {
-      info: {
-        day: 1,
-        money: 0,
-        population: 0
-      },
-      army: {
-        shield: 0,
-        warrior: 0,
-        archer: 0,
-        rider: 0
-      },
-      town: {
-        level: 1
-      },
-      guard: {
-        shield: 0,
-        warrior: 0,
-        archer: 0,
-        rider: 0
-      },
-      log: [],
-      game: {
-        isAttacked: false
-      }
-    };
+import Player from './player.js';
+import Town from './town.js';
+export default class Core {
+  static getInstance(document) {
+    if (!this.instance) {
+      this.instance = new Core(document)
+    }
+    return this.instance
+  }
+  constructor(document) {
+    this.document = document
+    this.player = new Player()
+    this.town = new Town()
+    this.day = 1
+    this.log = []
   }
 
-  getData() {
-    return this.data;
-  }
   init() {
-    console.log('init');
-    addListener(this);
-    this.notify('You are the command.');
-    const { guard } = town.create(this.data.town.level);
-    this.data.guard = guard;
-    const army = new Army(this)
-    army.init()
+    this.addListener()
+    this.player.addListener();
+
     this.refreshUI();
   }
 
@@ -61,26 +38,32 @@ export default class core {
     this.refreshUI();
   }
   refreshUI() {
-    refreshUI(this.data);
+    this.document.getElementById('day').innerHTML = this.day;
+    let text = '';
+    for (let message of data.log) {
+      text += `<div cless="message">${message}</div>`;
+    }
+    this.document.getElementById('log').innerHTML = text;
+
+    this.player.refreshUI();
+    this.town.refreshUI()
   }
   notify(message) {
     this.data.log.push(message);
   }
-  addArmy(type) {
-    switch (type) {
-      case 's':
-        this.data.army.shield += 1;
-        break;
-      case 'w':
-        this.data.army.warrior += 1;
-        break;
-      case 'a':
-        this.data.army.archer += 1;
-        break;
-      case 'r':
-        this.data.army.rider += 1;
-        break;
-    }
-    this.refreshUI();
+
+  addListener() {
+    this.document.getElementById('next').addEventListener('click', () => {
+      console.log('next');
+      this.next();
+    });
+    this.document.getElementById('attack').addEventListener('click', () => {
+      console.log('attack');
+      this.attack();
+    });
+    this.document.getElementById('detect').addEventListener('click', () => {
+      console.log('detect');
+      this.detect();
+    });
   }
 }
